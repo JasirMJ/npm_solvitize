@@ -1,5 +1,5 @@
 {
-  "name": "solvitize",
+  "name": "solvitize-npm",
   "version": "1.0.1",
   "description": "Common package managed by Jasir",
   "main": "index.js",
