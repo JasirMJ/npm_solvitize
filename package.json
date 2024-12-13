@@ -1,6 +1,6 @@
 {
   "name": "npm-solvitize",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Common package managed by Jasir",
   "main": "index.js",
   "scripts": {
