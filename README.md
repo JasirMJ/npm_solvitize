@@ -5,7 +5,7 @@ This is under development
 
 npm init
 
-npm install solvitize
+npm install npm-solvitize
 
 Then npm login
 
