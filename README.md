@@ -34,6 +34,8 @@ Then to make package, type `npm pack`
 
 Then make some changes and to update package
 
+Version format : [major].[minor].[patch]
+
 `npm version patch` # For bug fixes 
 
 `npm version minor` # For new features 
