@@ -40,8 +40,8 @@ export const formatResponse = (response, isSuccess) => {
     try {
         let status_code = null;
 
-        console.log("Format response ", response)
-        console.log("Format response status ", response.status)
+        // console.log("Format response ", response)
+        // console.log("Format response status ", response.status)
 
         if (response === undefined) {
             return {
@@ -136,3 +136,36 @@ export const formatResponse = (response, isSuccess) => {
 };
 
 
+export const onChangeHandler = (e,data,setData) => {
+    const { name, value, type, files  } = e.target;
+    console.log("Name:", name, "Value:", value, "Type:", type, "Files:", files);
+    if (type === 'file') {
+        // If the input type is 'file', we are dealing with file input, so we set the file object
+        setData({
+            ...data,
+            [name]: files[0],  // Use the first file selected (files[0] is an array)
+        });
+    } else {
+        // For regular text input or other types, just update the value
+        setData({
+            ...data,
+            [name]: value,
+        });
+    }
+};
+
+export const handleResponseMessage = (status,error) => {
+    // function to handle response message of solvitize backend api
+    // console.log("Handle Error", status, error)
+    let message = ""
+    if(error.includes("name already exists")) {
+        message = "Data with provided information already exists"
+    }
+    else{
+        message = error
+    }
+
+    console.log("Response message handler :",message)    
+    return message
+    
+}
