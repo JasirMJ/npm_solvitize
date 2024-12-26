@@ -138,7 +138,7 @@ export const formatResponse = (response, isSuccess) => {
 
 export const onChangeHandler = (e,data,setData) => {
     const { name, value, type, files  } = e.target;
-    console.log("Name:", name, "Value:", value, "Type:", type, "Files:", files);
+    // console.log("Name:", name, "Value:", value, "Type:", type, "Files:", files);
     if (type === 'file') {
         // If the input type is 'file', we are dealing with file input, so we set the file object
         setData({
@@ -160,6 +160,9 @@ export const handleResponseMessage = (status,error) => {
     let message = ""
     if(error.includes("name already exists")) {
         message = "Data with provided information already exists"
+    }
+    else if(error.includes("because they are referenced through protected foreign keys")) {
+        message = "You cannot delete this data because it is referenced by other data"
     }
     else{
         message = error
