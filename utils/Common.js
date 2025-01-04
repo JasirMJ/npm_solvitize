@@ -57,7 +57,6 @@ export const formatResponse = (response, isSuccess) => {
         // {"details":"some message"}
         // if response has key detail 
         if (response?.data?.detail) {
-            console.log("BLCOK 1")
             // TODO:  Need to handle invalid username or password, form valitation etc 
 
             return {
@@ -68,16 +67,11 @@ export const formatResponse = (response, isSuccess) => {
             };
         }
         else if (isSuccess) {
-            console.log("BLCOK 2")
 
             if (response?.data?.Data) {
-                console.log("BLCOK 3")
                 // usually for POST request
                 let message = response?.data?.Message
-                if (message.includes("Unable to log in with provided credentials")) {
-                    message = "Invalid Username or Password"
-                }
-
+             
 
                 return {
                     status: response?.data?.Status,
@@ -87,7 +81,6 @@ export const formatResponse = (response, isSuccess) => {
                 };
             } else {
                 // For getting list of data from API
-                console.log("BLCOK 4")
                 return {
                     status: true,
                     message: response?.data?.message || "GET Request successful",
@@ -172,6 +165,9 @@ export const handleResponseMessage = (status,error) => {
     }
     else if(error.includes("because they are referenced through protected foreign keys")) {
         message = "You cannot delete this data because it is referenced by other data"
+    }
+    else if (error.includes("Unable to log in with provided credentials")) {
+        message = "Invalid Username or Password"
     }
     else{
         message = error
